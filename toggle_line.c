@@ -53,7 +53,8 @@ int main(int argc, char ** argv){
     if (argc < 2){
         printf("Supply at least two arguments:\n"
                 "file_name + string to replace at any quantity divided by spaces\n"
-                "(and only spaces)");
+                "(and only spaces)\n");
+        exit(EXIT_SUCCESS);
     }
     else{
         file_name = *(argv + 1);
@@ -71,6 +72,8 @@ int main(int argc, char ** argv){
     }
 
     char * file = load(file_name);
+    if (file == NULL)
+        exit(EXIT_FAILURE);
     size_t file_size = strlen(file);
 
     /* Search and replace */
@@ -87,5 +90,4 @@ int main(int argc, char ** argv){
     }
     
      save(file_name, file);
-     puts(file);
 }
