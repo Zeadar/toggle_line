@@ -7,7 +7,7 @@ char * load(const char * file_name){
     size_t file_size = 0;
 
     if (p_file == NULL){
-        printf("opening error");
+        printf("opening error\n");
         return NULL;
     }
 
@@ -19,7 +19,7 @@ char * load(const char * file_name){
     char * file_content = calloc(file_size + 1, sizeof(char));
 
     if (file_size != fread(file_content, sizeof(char), file_size, p_file)){
-        printf("reading error");
+        printf("reading error\n");
         return NULL;
     }
 
@@ -31,12 +31,12 @@ char * load(const char * file_name){
 int save(const char * file_name, const char * file_content){
     FILE * p_file = fopen(file_name, "w");
     if (p_file == NULL){
-        printf("opening error");
+        printf("opening error\n");
         return -1;
     }
 
     if (fputs(file_content, p_file) < 0){
-        printf("writing error");
+        printf("writing error\n");
         return -2;
     }
 
